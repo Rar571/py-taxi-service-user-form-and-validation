@@ -1,4 +1,3 @@
-from django import views
 from django.urls import path
 
 from .views import (
@@ -13,7 +12,12 @@ from .views import (
     ManufacturerListView,
     ManufacturerCreateView,
     ManufacturerUpdateView,
-    ManufacturerDeleteView, DriverCreateView, DriverDeleteView, DriverLicenseUpdateView, car_assign_driver, car_remove_driver,
+    ManufacturerDeleteView,
+    DriverCreateView,
+    DriverDeleteView,
+    DriverLicenseUpdateView,
+    car_assign_driver,
+    car_remove_driver,
 )
 
 urlpatterns = [

@@ -83,14 +83,19 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def car_assign_driver(request, pk):
-    car = get_object_or_404(Car, pk=pk)
-    car.drivers.add(request.user)
-    return redirect("taxi:car-detail", pk=pk)
+    if request.method == "POST":
+        car = get_object_or_404(Car, pk=pk)
+        car.drivers.add(request.user)
+        return redirect("taxi:car-detail", pk=pk)
+
+
+
 @login_required
 def car_remove_driver(request, pk):
-    car = get_object_or_404(Car, pk=pk)
-    car.drivers.remove(request.user)
-    return redirect("taxi:car-detail", pk=pk)
+    if request.method == "POST":
+        car = get_object_or_404(Car, pk=pk)
+        car.drivers.remove(request.user)
+        return redirect("taxi:car-detail", pk=pk)
 
 
 class DriverListView(LoginRequiredMixin, generic.ListView):
